@@ -3,8 +3,7 @@ using info.someiyoshino.Tsukasa;
 
 public class Sample : MonoBehaviour
 {
-    //private readonly T2sFSM<Sample> StateMachine = new();
-    private readonly T2sFSM<Sample> StateMachine = new T2sFSM<Sample>();
+    private readonly T2sFSM<Sample> StateMachine = new();
 
     void Start()
     {
