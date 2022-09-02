@@ -1,5 +1,5 @@
 ﻿//T2sFSM
-//Copyright (c) 2022 tsukasa TUTIYA
+//Copyright (c) 2022 tsukasa TSUCHIYA(T2/t_tutiya)
 //This software is released under the MIT License.
 //http://opensource.org/licenses/mit-license.php
 
