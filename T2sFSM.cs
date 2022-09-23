@@ -12,22 +12,46 @@ namespace info.someiyoshino.Tsukasa
     {
         public interface IState
         {
-            public bool Update(TContext context);
+            public void Update(TContext context, T2sFSM<TContext> StateMachine);
         }
 
-        private readonly Stack<IState> StateStack = new();
+        private readonly Stack<IState> stateStack = new();
+
+        private bool exitLoop;
+
+        private int debugCounter;
 
         public void Update(TContext context)
         {
-            while (StateStack.Count > 0)
+            debugCounter = 0;
+            while (stateStack.TryPop(out IState result))
             {
-                if (StateStack.Pop().Update(context)) return;
+                exitLoop = true;
+
+                result.Update(context, this);
+
+                if (exitLoop) break;
+
+                debugCounter++;
+
+                if (debugCounter > 100)
+                {
+#if UNITY_EDITOR
+                    UnityEngine.Debug.Break();
+#endif
+                    return;
+                }
             }
         }
 
         public void PushState(IState state)
         {
-            StateStack.Push(state);
+            stateStack.Push(state);
+        }
+
+        public void EnableContineLoop()
+        {
+            exitLoop = false;
         }
     }
 }
