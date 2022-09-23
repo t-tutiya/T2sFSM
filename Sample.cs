@@ -19,34 +19,34 @@ public class Sample : MonoBehaviour
     {
         public float ElapsedTime = 0.0f;
 
-        public bool Update(Sample context)
+        public void Update(Sample context, T2sFSM<Sample> stateMachine)
         {
             ElapsedTime += Time.deltaTime;
 
             if (ElapsedTime >= 2.0f)
             {
-                context.StateMachine.PushState(new Wait());
-                context.StateMachine.PushState(new Output("Output:2"));
-                context.StateMachine.PushState(new Output("Output:1"));
-                return false;
+                stateMachine.PushState(new Wait());
+                stateMachine.PushState(new Output("Output:2"));
+                stateMachine.PushState(new Output("Output:1"));
+                stateMachine.EnableContineLoop();
+                return ;
             }
-            context.StateMachine.PushState(this);
-            return true;
+            stateMachine.PushState(this);
         }
     }
 
     public class Output : T2sFSM<Sample>.IState
     {
-        string Text;
+        readonly string Text;
         public Output(string text)
         {
             Text = text;
         }
 
-        public bool Update(Sample context)
+        public void Update(Sample context, T2sFSM<Sample> stateMachine)
         {
             Debug.Log(Text);
-            return false;
+            stateMachine.EnableContineLoop();
         }
     }
 }

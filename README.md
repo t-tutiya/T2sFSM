@@ -11,3 +11,6 @@ A minimal C# implementation of a stack-based state machine (a.k.a "Tsukasa Syste
 
 #unity ツカサ式スタック型ステートマシンの紹介（ゲーム向き）
 https://someiyoshino.info/entry/2022/09/01/200643
+
+#unity ツカサ式スタック型ステートマシンT2sFSM（その２）
+https://someiyoshino.info/entry/2022/09/23/225714
