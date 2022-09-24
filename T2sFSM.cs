@@ -32,9 +32,7 @@ namespace info.someiyoshino.Tsukasa
 
                 if (exitLoop) break;
 
-                debugCounter++;
-
-                if (debugCounter > 100)
+                if (debugCounter++ > 100)
                 {
 #if UNITY_EDITOR
                     UnityEngine.Debug.Break();
@@ -49,7 +47,7 @@ namespace info.someiyoshino.Tsukasa
             stateStack.Push(state);
         }
 
-        public void EnableContineLoop()
+        public void EnableContinueLoop()
         {
             exitLoop = false;
         }

@@ -28,7 +28,7 @@ public class Sample : MonoBehaviour
                 stateMachine.PushState(new Wait());
                 stateMachine.PushState(new Output("Output:2"));
                 stateMachine.PushState(new Output("Output:1"));
-                stateMachine.EnableContineLoop();
+                stateMachine.EnableContinueLoop();
                 return ;
             }
             stateMachine.PushState(this);
@@ -46,7 +46,7 @@ public class Sample : MonoBehaviour
         public void Update(Sample context, T2sFSM<Sample> stateMachine)
         {
             Debug.Log(Text);
-            stateMachine.EnableContineLoop();
+            stateMachine.EnableContinueLoop();
         }
     }
 }
